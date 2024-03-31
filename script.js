@@ -288,33 +288,37 @@ calculate.addEventListener("click", () => {
   // user inputs
   const fromUnit = from.value.replace(/\s+/g, "_");
   const toUnit = to.value.replace(/\s+/g, "_");
+
   const unit = Number(document.querySelector("#from").value);
+  if (isNaN(unit)) {
+    document.getElementById("wrong-input").innerText = "Please enter a number";
+  }
   const output = document.querySelector("#to");
 
   switch (selectedUnit) {
     case "Length":
       const result = lengthConverter(unit, fromUnit, toUnit);
-      output.value = `${result} ${toUnit}`;
+      output.value = `${result.toFixed(6)} ${toUnit}`;
       break;
     case "Temperature":
       const result1 = temperatureConverter(unit, fromUnit, toUnit);
-      output.value = `${result1} ${toUnit}`;
+      output.value = `${result1.toFixed(6)} ${toUnit}`;
       break;
     case "Area":
       const result2 = areaConverter(unit, fromUnit, toUnit);
-      output.value = `${result2} ${toUnit}`;
+      output.value = `${result2.toFixed(6)} ${toUnit}`;
       break;
     case "Volume":
       const result3 = volumeConverter(unit, fromUnit, toUnit);
-      output.value = `${result3} ${toUnit}`;
+      output.value = `${result3.toFixed(6)} ${toUnit}`;
       break;
     case "Weight":
       const result4 = weightConverter(unit, fromUnit, toUnit);
-      output.value = `${result4} ${toUnit}`;
+      output.value = `${result4.toFixed(6)} ${toUnit}`;
       break;
     case "Time":
       const result5 = timeConverter(unit, fromUnit, toUnit);
-      output.value = `${result5} ${toUnit}`;
+      output.value = `${result5.toFixed(6)} ${toUnit}`;
       break;
   }
 });
